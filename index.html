@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- //bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- //Coustom Css -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- font awsome link-->
+    <script src="https://kit.fontawesome.com/669592008a.js" crossorigin="anonymous"></script>
+
+    <title>Phone Gallery using Api</title>
+</head>
+<body>
+    
+    <header>
+        <div class="container">
+            <div class="webSiteName text-center fontStyle">
+                <h2 class="fs-1"><span class="text-danger">Phone</span>Gallery</h2>
+            </div>
+
+
+            <div class="text-center mt-3 ">
+                <input id="inputBox" type="text" placeholder="Please enter a phone name" class="w-50 p-2 rounded">
+                <button onclick="searchBtn()" class="btn bg-danger text-white py-2 textBtn">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- main section -->
+
+    <section>
+        <!-- //all items  -->
+        <div class="row">
+            <div class="col-md-1"></div>
+            
+            <div class="col-md-10 my-4 ">
+                <div id="itemsDiv" class="row">
+
+                </div>
+                <button class=class="btn bg-danger text-white py-2 textBtn">Show More...</button>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+
+        <!-- items details  -->
+        <div class="itemDetails">
+
+        </div>
+    </section>
+
+
+
+
+
+
+    <!-- //bootstrap js link -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <!-- //Coustom js file  -->
+    <script src="./js/api.js"></script>
+</body>
+</html>
