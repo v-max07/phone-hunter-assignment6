@@ -26,7 +26,7 @@
 
             <div class="text-center mt-3 ">
                 <input id="inputBox" type="text" placeholder="Please enter a phone name" class="w-50 p-2 rounded">
-                <button onclick="searchBtn()" class="btn bg-danger text-white py-2 textBtn">Search</button>
+                <button onclick="searchBtn(true)" class="btn bg-danger text-white py-2 textBtn">Search</button>
             </div>
         </div>
     </header>
@@ -42,7 +42,7 @@
                 <div id="itemsDiv" class="row">
 
                 </div>
-                <button class="btn bg-danger text-white py-2 textBtn">Show More...</button>
+                <button id="showMoreBtn" onclick="getMoreItems()" class="btn bg-danger text-white py-2 textBtn">Show More...</button>
             </div>
             <div class="col-md-1"></div>
         </div>

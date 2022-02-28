@@ -18,3 +18,8 @@ body{
 .divHeight{
     height: 250px;
 }
+
+/* hide the show more botton */
+#showMoreBtn{
+    display: none;
+}
