@@ -24,7 +24,7 @@ function searchBtn(isSlice){
 const displayItems = (items, isSlice) => {
     // console.log(items.length);
     //chacking the upto 20 items 
-    if (items.length > 21 && isSlice) {
+    if (items.length>20 && isSlice) {
         document.getElementById('showMoreBtn').style.display = 'block';
     } else {
         document.getElementById('showMoreBtn').style.display = 'none';
