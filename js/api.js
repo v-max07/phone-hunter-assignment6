@@ -94,8 +94,13 @@ const displayItemDetails = (details) => {
     // console.log(details);
     //get the items div
     const itemsDiv = document.getElementById('itemsDiv');
+    
     //clear old data
     itemsDiv.textContent = '';
+
+    //Collects sensors name
+    const [a, b, c, d, e, f] = details.mainFeatures.sensors;
+    console.log(a, b, c, d, e, f);
 
     const newDiv = document.createElement('div');
     newDiv.classList.add('col');
@@ -116,9 +121,22 @@ const displayItemDetails = (details) => {
                             <p class=""><small class="text-muted">
                             Release Date: ${details.releaseDate}
                             </small></p>
-                            <p onclick="showMoreDetails()" class=""><small class="text-danger border border-1 p-2 border-secondary rounded-2 border-top-0 border-start-0">
+                            <p id="moreDetailsBtn" onclick="showMoreDetails()" class=""><small class="text-danger border border-1 p-2 border-secondary rounded-2 border-top-0 border-start-0">
                             See More details....
                             </small></p>
+
+                            <div id="othersInfo">
+                                <hr>
+                                <p class=""><span class="fw-bold">Bluetooth: </span> ${details.others.Bluetooth}</p>
+                                <p class=""><span class="fw-bold">GPS: </span> ${details.others.GPS}</p>
+                                <p class=""><span class="fw-bold">NFC: </span> ${details.others.NFC}</p>
+                                <p class=""><span class="fw-bold">Radio: </span> ${details.others.Radio}</p>
+                                <p class=""><span class="fw-bold">USB: </span> ${details.others.USB}</p>
+                                <p class=""><span class="fw-bold">WLAN: </span> ${details.others.WLAN}</p>
+                                <p id="sensorId" class="">
+                                    <span class="fw-bold">Sensors: </span> ${a+", "+b+", "+c+", "+d+", "+e+", "+f}                
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
