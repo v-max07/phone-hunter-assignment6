@@ -1,25 +1,32 @@
 function searchBtn(isSlice){
     const inputText = document.getElementById('inputBox');
-    const searchText = inputText.value;
+    let searchText = inputText.value;
+
     const sliceIs = isSlice;
-    if (searchText == '') {
+
+    if (searchText == '' && sliceIs === true) {
         const itemsDiv = document.getElementById('itemsDiv');
 
         itemsDiv.innerHTML = `
             <div class="text-center my-2 border-bottom border-black p-4 ">
-                <h4 class="text-danger">Sorry! Search Item not found...</h4>
+                <h4 class="text-danger">Please a phone name in search bar...</h4>
             </div>
         `;
+        document.getElementById('showMoreBtn').style.display = 'none';
     } else {
-        const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
+
+        const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
 
         fetch(url)
             .then(res => res.json())
             .then(data => displayItems(data.data, sliceIs))
-        
+          
     }
+
+    // inputText.value = '';
     
 };
+
 
 const displayItems = (items, isSlice) => {
     // console.log(items.length);
@@ -28,10 +35,11 @@ const displayItems = (items, isSlice) => {
         document.getElementById('showMoreBtn').style.display = 'block';
     } else {
         document.getElementById('showMoreBtn').style.display = 'none';
+        document.getElementById('inputBox').value = '';
     }
 
     //chacking the input value has enough items for showing in UI.
-    if (items.length === 0) {
+    if (items.length === 0 && isSlice) {
         const itemsDiv = document.getElementById('itemsDiv');
 
         itemsDiv.innerHTML = `
@@ -59,8 +67,9 @@ const displayItems = (items, isSlice) => {
                     <div class="phone-picture">
                         <img class="w-25" src="${item.image}" alt="">
                     </div>
-                    <h4>Model-Name:${item.phone_name} </h4>
-                    <p>Brand:${item.brand} </p>
+                    <h5 class="mt-3">Model-Name:${item.phone_name} </h5>
+                    <p class="mt-3">Brand:${item.brand} </p>
+                    <button onclick="showItemDetails('${item.slug}')" class="btn bg-danger text-white py-2 textBtn ">Details</button>
                 </div>
             `;
             itemsDiv.appendChild(newDiv);
@@ -70,11 +79,64 @@ const displayItems = (items, isSlice) => {
 };
 
 
+//details button
+const showItemDetails = (modelId) => {
+    // console.log(modelId);
+    document.getElementById('inputBox').value = '';
+
+    const url = `https://openapi.programming-hero.com/api/phone/${modelId}`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayItemDetails(data.data))
+}
+
+const displayItemDetails = (details) => {
+    // console.log(details);
+    //get the items div
+    const itemsDiv = document.getElementById('itemsDiv');
+    //clear old data
+    itemsDiv.textContent = '';
+
+    const newDiv = document.createElement('div');
+    newDiv.classList.add('col');
+    newDiv.innerHTML = `
+        <div class="card mb-3 mx-auto" style="max-width: 880px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="${details.image}" class="img-fluid rounded-start p-3" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h4 class="card-title">Name: ${details.name}</h4>
+                            <p class=""><span class="fw-bold">Brand:</span> ${details.brand}</p>
+                            <p class=""><span class="fw-bold">Storage:</span> ${details.mainFeatures.storage}</p>
+                            <p class=""><span class="fw-bold">Memory:</span> ${details.mainFeatures.memory}</p>
+                            <p class=""><span class="fw-bold">Display Size:</span> ${details.mainFeatures.displaySize}</p>
+                            <p class=""><span class="fw-bold">Chip Set:</span> ${details.mainFeatures.chipSet}</p>
+                            <p class=""><small class="text-muted">
+                            Release Date: ${details.releaseDate}
+                            </small></p>
+                            <p onclick="showMoreDetails()" class=""><small class="text-danger border border-1 p-2 border-secondary rounded-2 border-top-0 border-start-0">
+                            See More details....
+                            </small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+    itemsDiv.appendChild(newDiv);
+    document.getElementById('showMoreBtn').style.display = 'none';
+}
 
 
 
-// for see more items botton
+const showMoreDetails = () => {
+    console.log('clicked');
+}
 
+
+// show more details button
 const getMoreItems = () => {
     searchBtn(false);
+    document.getElementById('inputBox').value = '';
 }

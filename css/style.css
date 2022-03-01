@@ -16,10 +16,16 @@ body{
 }
 
 .divHeight{
-    height: 250px;
+    height: 310px;
 }
 
 /* hide the show more botton */
 #showMoreBtn{
     display: none;
+}
+
+/* //details button */
+
+.btnMargin{
+   
 }
