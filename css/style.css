@@ -11,10 +11,8 @@ body{
     font-family: 'League Gothic', sans-serif;
 }
 
-.textBtn{
-    margin-top: -1;
-}
 
+/* items div height  */
 .divHeight{
     height: 310px;
 }
@@ -24,8 +22,9 @@ body{
     display: none;
 }
 
-/* //details button */
 
-.btnMargin{
-   
+/* hide sensor items  */
+
+#othersInfo{
+    display: none;
 }

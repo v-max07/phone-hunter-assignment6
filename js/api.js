@@ -1,4 +1,7 @@
-function searchBtn(isSlice){
+//call function and show all item using api
+
+// search botton function
+function searchBtn(isSlice) {
     const inputText = document.getElementById('inputBox');
     let searchText = inputText.value;
 
@@ -27,7 +30,7 @@ function searchBtn(isSlice){
     
 };
 
-
+// display all needed items
 const displayItems = (items, isSlice) => {
     // console.log(items.length);
     //chacking the upto 20 items 
@@ -79,7 +82,7 @@ const displayItems = (items, isSlice) => {
 };
 
 
-//details button
+//details button function for showing items details
 const showItemDetails = (modelId) => {
     // console.log(modelId);
     document.getElementById('inputBox').value = '';
@@ -90,6 +93,8 @@ const showItemDetails = (modelId) => {
         .then(data => displayItemDetails(data.data))
 }
 
+
+//this function for display an item details 
 const displayItemDetails = (details) => {
     // console.log(details);
     //get the items div
@@ -119,7 +124,7 @@ const displayItemDetails = (details) => {
                             <p class=""><span class="fw-bold">Display Size:</span> ${details.mainFeatures.displaySize}</p>
                             <p class=""><span class="fw-bold">Chip Set:</span> ${details.mainFeatures.chipSet}</p>
                             <p class=""><small class="text-muted">
-                            Release Date: ${details.releaseDate}
+                            Release Date: ${details?.releaseDate ?? "Not found it!"}
                             </small></p>
                             <p id="moreDetailsBtn" onclick="showMoreDetails()" class=""><small class="text-danger border border-1 p-2 border-secondary rounded-2 border-top-0 border-start-0">
                             See More details....
@@ -147,13 +152,17 @@ const displayItemDetails = (details) => {
 }
 
 
-
+//this function for showing more details on click 
 const showMoreDetails = () => {
-    console.log('clicked');
+    //show more detsils
+    document.getElementById('moreDetailsBtn').style.display = 'none';
+    // hide more detsils button
+    document.getElementById('othersInfo').style.display = 'block';
+
 }
 
 
-// show more details button
+// show more items button
 const getMoreItems = () => {
     searchBtn(false);
     document.getElementById('inputBox').value = '';
