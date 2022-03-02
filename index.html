@@ -17,12 +17,12 @@
 </head>
 <body>
     
+    <!-- search bar and botton section  -->
     <header>
         <div class="container">
             <div class="webSiteName text-center fontStyle">
                 <h2 class="fs-1"><span class="text-danger">Phone</span>Gallery</h2>
             </div>
-
 
             <div class="text-center mt-3 ">
                 <input id="inputBox" type="text" placeholder="Please enter a phone name" class="w-50 p-2 rounded">
@@ -31,26 +31,24 @@
         </div>
     </header>
 
-    <!-- main section -->
 
+<!-- main section -- dispaly all items-->
     <section>
-        <!-- //all items  -->
+    <!-- //display all items in this div -->
         <div class="row">
-            <div class="col-md-1"></div>
+            <div class="col-md-1"></div> <!-- extra div left -->
             
-            <div class="col-md-10 my-4 ">
+            <div class="col-md-10 my-4 "> <!-- all items div -->
                 <div id="itemsDiv" class="row">
 
                 </div>
                 <button id="showMoreBtn" onclick="getMoreItems()" class="btn bg-danger text-white py-2 ">Show More.....</button>
             </div>
 
-            <div class="col-md-1"></div>
+            <div class="col-md-1"></div> <!-- extra div right -->
         </div>
 
-
-
-        <!-- items details  -->
+        <!-- display item details [div]  -->
         <div class="itemDetails">
 
         </div>

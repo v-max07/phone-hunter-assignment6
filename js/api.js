@@ -105,7 +105,7 @@ const displayItemDetails = (details) => {
 
     //Collects sensors name
     const [a, b, c, d, e, f] = details.mainFeatures.sensors;
-    console.log(a, b, c, d, e, f);
+    // console.log(a, b, c, d, e, f);
 
     const newDiv = document.createElement('div');
     newDiv.classList.add('col');
@@ -124,7 +124,7 @@ const displayItemDetails = (details) => {
                             <p class=""><span class="fw-bold">Display Size:</span> ${details.mainFeatures.displaySize}</p>
                             <p class=""><span class="fw-bold">Chip Set:</span> ${details.mainFeatures.chipSet}</p>
                             <p class=""><small class="text-muted">
-                            Release Date: ${details?.releaseDate ?? "Not found it!"}
+                            Release Date: ${details?.releaseDate || "Not found relese date!"}
                             </small></p>
                             <p id="moreDetailsBtn" onclick="showMoreDetails()" class=""><small class="text-danger border border-1 p-2 border-secondary rounded-2 border-top-0 border-start-0">
                             See More details....
@@ -145,8 +145,8 @@ const displayItemDetails = (details) => {
                         </div>
                     </div>
                 </div>
-            </div>
-            `;
+        </div>
+        `;
     itemsDiv.appendChild(newDiv);
     document.getElementById('showMoreBtn').style.display = 'none';
 }
